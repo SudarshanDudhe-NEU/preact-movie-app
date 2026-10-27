@@ -7,14 +7,14 @@ type MovieCardProps = {
 
 export function MovieCard({ movie }: MovieCardProps) {
   const year = movie.release_date? movie.release_date.split('-')[0] : '';
-  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
+  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : '';
   const { isFavorite, addFavorite, removeFavorite } = useMovieContext()
   const favorite = isFavorite(movie.id);
   return (
     <article className="movie-card">
       <div className="movie-card__poster-wrap">
         {posterUrl ? (
-          <img className="movie-card__poster" src={posterUrl} alt={`${movie.title} poster`} loading="lazy" decoding="async" />
+          <img className="movie-card__poster" src={posterUrl} alt={`${movie.title} poster`} />
         ) : (
           <div className="movie-card__no-poster" aria-label="No poster available" role="img">
             No Poster Available
